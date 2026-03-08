@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday</title>
+<title>Happy Birthday Cutieee</title>
 
 <style>
 
@@ -10,52 +10,59 @@ body{
 margin:0;
 font-family:Arial;
 background:linear-gradient(135deg,#ff758c,#ff7eb3);
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
 overflow:hidden;
-text-align:center;
 color:white;
+text-align:center;
 }
 
-#gift{
-font-size:26px;
-background:white;
-color:#ff4d6d;
-padding:20px 40px;
-border-radius:20px;
-cursor:pointer;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
-}
+/* slideshow */
 
-#content{
-display:none;
+.container{
+display:flex;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+width:100%;
+gap:20px;
 padding:20px;
 }
 
-img{
-width:230px;
+.card{
+min-width:280px;
+height:320px;
+background:white;
+color:#ff4d6d;
 border-radius:20px;
-margin:15px 0;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:20px;
+scroll-snap-align:center;
 }
+
+img{
+width:180px;
+border-radius:20px;
+margin-bottom:15px;
+}
+
+/* heart animation */
 
 .heart{
 position:absolute;
 bottom:-50px;
-font-size:30px;
+font-size:28px;
 animation:love 6s linear infinite;
 }
 
 @keyframes love{
-0%{
-transform:translateY(0);
-opacity:1;
-}
-100%{
-transform:translateY(-110vh);
-opacity:0;
-}
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
 }
 
 </style>
@@ -63,27 +70,33 @@ opacity:0;
 
 <body>
 
-<div id="gift" onclick="openGift()">💌 Tap to Open Your Surprise</div>
+<div class="container">
 
-<div id="content">
+<div class="card">
+<h2>🎂 Happy Birthday Cutieee 🫶❤️‍🩹😚</h2>
+<p>Swipe ➡ to see wishes</p>
+</div>
 
-<h1>🎂 Happy Birthday Cutieee 🫶❤️‍🩹😚</h1>
-
+<div class="card">
 <img src="Snapchat-1740021833.jpg">
+<p>May your birthday bring lots of happiness and beautiful moments ✨</p>
+</div>
 
-<p>
+<div class="card">
+<p>I wish your life becomes full of success, peace and joy 🌸</p>
+</div>
 
-May your birthday bring happiness and beautiful memories ✨ <br><br>
+<div class="card">
+<p>Even if we don't talk much now, I still wish the best for you always 💫</p>
+</div>
 
-I wish your life becomes full of success and joy 🌸 <br><br>
+<div class="card">
+<p>Stay happy, keep smiling and keep shining forever 😊</p>
+</div>
 
-Even if we don't talk like before, I still wish the best for you 💫 <br><br>
-
-Stay happy and keep smiling always 😊
-
-</p>
-
-<p>— From Amit 💖</p>
+<div class="card">
+<p>Once again Happy Birthday Cutieee 💖 <br> — From Amit</p>
+</div>
 
 </div>
 
@@ -92,15 +105,6 @@ Stay happy and keep smiling always 😊
 <div class="heart" style="left:50%">❤️</div>
 <div class="heart" style="left:70%">❤️</div>
 <div class="heart" style="left:90%">❤️</div>
-
-<script>
-
-function openGift(){
-document.getElementById("gift").style.display="none";
-document.getElementById("content").style.display="block";
-}
-
-</script>
 
 </body>
 </html>
