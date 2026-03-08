@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Surprise</title>
+<title>Birthday Wish</title>
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:linear-gradient(135deg,#ff5f8a,#ff9eb5);
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
 height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 overflow:hidden;
 color:white;
 text-align:center;
@@ -18,43 +22,30 @@ text-align:center;
 
 /* tap screens */
 
-.screen{
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-font-size:28px;
+#tap,#tap2{
 cursor:pointer;
-flex-direction:column;
-}
-
-.tapbox{
-background:white;
-color:#ff4d6d;
-padding:25px 35px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
+font-size:26px;
 }
 
 /* slider */
 
 .slider{
 display:none;
-display:flex;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
 width:100%;
+height:100vh;
+overflow-x:auto;
+display:flex;
+scroll-snap-type:x mandatory;
 }
 
 .slide{
 min-width:100%;
-height:100vh;
+height:100%;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
 scroll-snap-align:center;
-padding:20px;
 }
 
 .card{
@@ -62,12 +53,11 @@ background:white;
 color:#ff4d6d;
 padding:25px;
 border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
 max-width:320px;
 }
 
 img{
-width:220px;
+width:230px;
 border-radius:20px;
 margin-bottom:15px;
 }
@@ -76,36 +66,130 @@ margin-bottom:15px;
 
 .heart{
 position:absolute;
-bottom:-50px;
-font-size:28px;
-animation:love 6s linear infinite;
+bottom:-40px;
+font-size:22px;
+animation:float 6s linear infinite;
 }
 
-@keyframes love{
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-110vh);opacity:0;}
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
 }
 
 </style>
+
 </head>
 
 <body>
-
-<!-- MUSIC -->
 
 <audio id="music" loop>
 <source src="song.mp3" type="audio/mp3">
 </audio>
 
-<!-- screen 1 -->
+<!-- tap 1 -->
 
-<div id="s1" class="screen" onclick="step1()">
-<div class="tapbox">🎁 Tap for your surprise</div>
+<div id="tap" onclick="step1()">
+🎁 Tap for your surprise
 </div>
 
-<!-- screen 2 -->
+<!-- tap 2 -->
 
-<div id="s2" class="screen" style="display:none;" onclick="step2()">
+<div id="tap2" style="display:none;" onclick="step2()">
+💌 Tap again
+</div>
+
+<!-- slides -->
+
+<div class="slider" id="slider">
+
+<div class="slide">
+<div class="card">
+
+<img src="Snapchat-1740021833.jpg">
+
+<h2>Happy Birthday Cutieee 🫶❤️‍🩹😚</h2>
+
+Swipe ➡️
+
+</div>
+</div>
+
+<div class="slide">
+<div class="card">
+
+I know we don't talk much anymore 💭<br>
+But I still wish you happiness today<br>
+Hope your day is filled with smiles 😊<br>
+And beautiful moments ✨<br>
+Stay happy always ❤️
+
+</div>
+</div>
+
+<div class="slide">
+<div class="card">
+
+Even though things changed between us<br>
+I still respect the memories we had 🌸<br>
+Some memories always stay special 💖<br>
+Wishing you success and happiness ⭐<br>
+Have a wonderful birthday 🎂
+
+</div>
+</div>
+
+<div class="slide">
+<div class="card">
+
+Life moves on and people change<br>
+But some feelings stay somewhere 💭<br>
+I truly wish the best for you 🌷<br>
+Stay blessed and keep smiling 😊<br>
+You deserve happiness 💞
+
+</div>
+</div>
+
+<div class="slide">
+<div class="card">
+
+<h2>Again Happy Birthday 🎂</h2>
+
+No matter how far life takes us<br>
+I hope you always find happiness ✨<br>
+Take care of yourself 🌸<br><br>
+
+I wish you a beautiful life ahead ❤️
+
+</div>
+</div>
+
+</div>
+
+<!-- hearts -->
+
+<div class="heart" style="left:20%">❤️</div>
+<div class="heart" style="left:40%">💖</div>
+<div class="heart" style="left:60%">❤️</div>
+<div class="heart" style="left:80%">💖</div>
+
+<script>
+
+function step1(){
+document.getElementById("tap").style.display="none";
+document.getElementById("tap2").style.display="block";
+}
+
+function step2(){
+document.getElementById("tap2").style.display="none";
+document.getElementById("slider").style.display="flex";
+document.getElementById("music").play();
+}
+
+</script>
+
+</body>
+</html><div id="s2" class="screen" style="display:none;" onclick="step2()">
 <div class="tapbox">💌 Tap again to see your surprise</div>
 </div>
 
