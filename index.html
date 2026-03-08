@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Birthday Surprise</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
@@ -20,20 +18,20 @@ text-align:center;
 color:white;
 }
 
-/* neon title */
+/* title glow */
 
 .glow{
 font-family:'Great Vibes',cursive;
-font-size:38px;
-animation:neon 1.5s infinite alternate;
+font-size:40px;
+animation:glow 1.5s infinite alternate;
 }
 
-@keyframes neon{
+@keyframes glow{
 from{text-shadow:0 0 10px #fff,0 0 20px #ff4d6d;}
-to{text-shadow:0 0 20px #fff,0 0 40px #ff4d6d;}
+to{text-shadow:0 0 25px #fff,0 0 40px #ff4d6d;}
 }
 
-/* tap screen */
+/* tap screens */
 
 .screen{
 display:flex;
@@ -42,7 +40,6 @@ align-items:center;
 height:100vh;
 flex-direction:column;
 cursor:pointer;
-font-size:26px;
 }
 
 .tapbox{
@@ -50,18 +47,18 @@ background:white;
 color:#ff4d6d;
 padding:25px 35px;
 border-radius:20px;
+font-size:24px;
 }
 
 .hint{
 margin-top:15px;
-font-size:16px;
 animation:blink 1.5s infinite;
 }
 
 @keyframes blink{
-0%{opacity:1;}
-50%{opacity:0.3;}
-100%{opacity:1;}
+0%{opacity:1}
+50%{opacity:0.4}
+100%{opacity:1}
 }
 
 /* slider */
@@ -82,7 +79,6 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-padding:20px;
 }
 
 .card{
@@ -91,8 +87,6 @@ color:#ff4d6d;
 padding:25px;
 border-radius:20px;
 max-width:320px;
-line-height:1.6;
-box-shadow:0 0 20px rgba(255,77,109,0.4);
 }
 
 img{
@@ -101,17 +95,11 @@ border-radius:20px;
 margin-bottom:10px;
 }
 
-.swipe{
-margin-top:10px;
-font-size:14px;
-opacity:0.7;
-}
-
 /* floating hearts */
 
-.heart{
+.floatHeart{
 position:absolute;
-bottom:-50px;
+bottom:-40px;
 font-size:22px;
 animation:float 6s linear infinite;
 }
@@ -121,95 +109,68 @@ animation:float 6s linear infinite;
 100%{transform:translateY(-120vh)}
 }
 
-/* neon LOVE background */
-
-.bgLove span{
-position:absolute;
-color:white;
-opacity:0.2;
-font-size:22px;
-animation:float 10s linear infinite;
-}
-
-/* heart burst */
+/* HEART BURST */
 
 .burst{
 position:absolute;
 font-size:22px;
-animation:burst 1.2s ease-out forwards;
 pointer-events:none;
+animation:explode 1s forwards;
 }
 
-@keyframes burst{
+@keyframes explode{
 0%{
 transform:scale(0);
 opacity:1;
 }
 100%{
-transform:scale(2) translateY(-120px);
+transform:translateY(-120px) scale(2);
 opacity:0;
 }
 }
 
 </style>
-
 </head>
 
 <body>
-
-<div class="bgLove">
-<span style="left:10%">LOVE</span>
-<span style="left:40%">LOVE</span>
-<span style="left:70%">LOVE</span>
-</div>
 
 <audio id="music" loop>
 <source src="song.mp3" type="audio/mp3">
 </audio>
 
-<!-- tap 1 -->
+<!-- TAP 1 -->
 
-<div id="s1" class="screen" onclick="step1(event)">
+<div id="s1" class="screen" onclick="next1()">
 
-<div class="tapbox">
-🎁 Tap for your surprise
-</div>
-
-<div class="hint">
-Tap to continue ❤️
-</div>
+<div class="tapbox">🎁 Tap for your surprise</div>
+<div class="hint">Tap to continue ❤️</div>
 
 </div>
 
-<!-- tap 2 -->
+<!-- TAP 2 -->
 
-<div id="s2" class="screen" style="display:none;" onclick="step2(event)">
+<div id="s2" class="screen" style="display:none;" onclick="next2()">
 
-<div class="tapbox">
-💌 Tap again
-</div>
-
-<div class="hint">
-Tap to open your surprise 💖
-</div>
+<div class="tapbox">💌 Tap again</div>
+<div class="hint">Tap to open surprise 💖</div>
 
 </div>
 
-<!-- slider -->
+<!-- SLIDER -->
 
 <div class="slider" id="slider">
 
 <div class="slide">
 <div class="card">
 <h2 class="glow">Happy Birthday My Laxmi Bow 🫶😚❤️</h2>
-<div class="swipe">Swipe ➡️</div>
+<p>Swipe ➡️</p>
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
 <img src="IMG-20260221-WA0029.jpg">
-<div class="swipe">Swipe ➡️</div>
+<p>Swipe ➡️</p>
 </div>
 </div>
 
@@ -223,7 +184,7 @@ Every moment with you feels magical ✨<br>
 I feel lucky to have you beside me 🍀<br>
 I love you forever ❤️
 
-<div class="swipe">Swipe ➡️</div>
+<p>Swipe ➡️</p>
 
 </div>
 </div>
@@ -231,29 +192,14 @@ I love you forever ❤️
 <div class="slide">
 <div class="card">
 <img src="IMG-20260221-WA0031.jpg">
-<div class="swipe">Swipe ➡️</div>
-</div>
-</div>
-
-<div class="slide">
-<div class="card">
-
-May your birthday be full of happiness 🎉<br>
-May your heart always stay peaceful 🌷<br>
-May your dreams come true one day ✨<br>
-May love always surround you 💞<br>
-May success follow you everywhere 🌟<br>
-Stay blessed always ❤️
-
-<div class="swipe">Swipe ➡️</div>
-
+<p>Swipe ➡️</p>
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
 <img src="IMG-20260221-WA0033.jpg">
-<div class="swipe">Swipe ➡️</div>
+<p>Swipe ➡️</p>
 </div>
 </div>
 
@@ -275,45 +221,55 @@ Your smile means everything to me 😊<br><br>
 
 </div>
 
-<div class="heart" style="left:20%">❤️</div>
-<div class="heart" style="left:50%">💖</div>
-<div class="heart" style="left:80%">❤️</div>
+<!-- floating hearts -->
+
+<div class="floatHeart" style="left:20%">❤️</div>
+<div class="floatHeart" style="left:50%">💖</div>
+<div class="floatHeart" style="left:80%">❤️</div>
 
 <script>
 
-function createBurst(x,y){
+/* HEART BURST */
 
-for(let i=0;i<15;i++){
+function burst(x,y){
 
-let heart=document.createElement("div");
-heart.className="burst";
-heart.innerHTML="❤️";
+for(let i=0;i<20;i++){
 
-heart.style.left=x+"px";
-heart.style.top=y+"px";
+let h=document.createElement("div");
 
-document.body.appendChild(heart);
+h.className="burst";
 
-setTimeout(()=>{
-heart.remove();
-},1200);
+h.innerHTML="❤️";
+
+h.style.left=x+"px";
+h.style.top=y+"px";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{h.remove()},1000);
 
 }
 
 }
 
-function step1(e){
+/* global tap burst */
 
-createBurst(e.clientX,e.clientY);
+document.addEventListener("click",function(e){
+
+burst(e.clientX,e.clientY);
+
+});
+
+/* steps */
+
+function next1(){
 
 document.getElementById("s1").style.display="none";
 document.getElementById("s2").style.display="flex";
 
 }
 
-function step2(e){
-
-createBurst(e.clientX,e.clientY);
+function next2(){
 
 document.getElementById("s2").style.display="none";
 document.getElementById("slider").style.display="flex";
@@ -321,12 +277,6 @@ document.getElementById("slider").style.display="flex";
 document.getElementById("music").play();
 
 }
-
-document.addEventListener("click",function(e){
-
-createBurst(e.clientX,e.clientY);
-
-});
 
 </script>
 
