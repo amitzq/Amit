@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Cutieee</title>
+<title>Birthday Surprise</title>
 
 <style>
 
@@ -11,16 +11,26 @@ margin:0;
 font-family:Arial;
 background:linear-gradient(135deg,#ff758c,#ff7eb3);
 height:100vh;
-display:flex;
-align-items:center;
 overflow:hidden;
 color:white;
 text-align:center;
 }
 
+/* first page */
+
+#tap{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-size:28px;
+cursor:pointer;
+}
+
 /* slider */
 
 .slider{
+display:none;
 display:flex;
 overflow-x:auto;
 scroll-snap-type:x mandatory;
@@ -31,14 +41,14 @@ width:100%;
 min-width:100%;
 height:100vh;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
-padding:20px;
+flex-direction:column;
 scroll-snap-align:center;
+padding:20px;
 }
 
-/* card style */
+/* card */
 
 .card{
 background:white;
@@ -74,7 +84,11 @@ animation:love 6s linear infinite;
 
 <body>
 
-<div class="slider">
+<div id="tap" onclick="openSurprise()">
+🎁 Tap to Open Your Birthday Surprise
+</div>
+
+<div class="slider" id="slider">
 
 <!-- Slide 1 -->
 
@@ -85,7 +99,7 @@ animation:love 6s linear infinite;
 
 <h2>🎂 Happy Birthday Cutieee 🫶❤️‍🩹😚</h2>
 
-<p>Swipe ➡ to see your birthday wishes ✨</p>
+<p>Swipe ➡ to see wishes</p>
 
 </div>
 </div>
@@ -96,11 +110,11 @@ animation:love 6s linear infinite;
 <div class="card">
 <p>
 
-May your birthday be filled with happiness ✨ <br>
-May your smile always stay forever 😊 <br>
+May your birthday bring happiness ✨ <br>
+May your smile stay forever 😊 <br>
 May your life be full of success 🌸 <br>
-May every dream of yours come true 💫 <br>
-And may you always stay blessed 💖
+May your dreams come true 💫 <br>
+Stay blessed always 💖
 
 </p>
 </div>
@@ -112,11 +126,11 @@ And may you always stay blessed 💖
 <div class="card">
 <p>
 
-I hope your life brings beautiful moments 🌷 <br>
-I wish your heart always stays happy 💕 <br>
-I wish success follows you everywhere 🌟 <br>
-I wish you peace and positivity 🌸 <br>
-And endless reasons to smile 😊
+I wish your life becomes beautiful 🌷 <br>
+May peace and joy follow you 🌸 <br>
+May you achieve everything you want 🌟 <br>
+May your days be bright 💫 <br>
+Keep smiling always 😊
 
 </p>
 </div>
@@ -129,10 +143,10 @@ And endless reasons to smile 😊
 <p>
 
 Even if we don't talk like before 💭 <br>
-I still wish the best for you always ✨ <br>
-May your path be full of light 🌟 <br>
-May happiness follow you forever 🌸 <br>
-And may you always shine 💖
+I still wish the best for you ✨ <br>
+May happiness stay with you 🌸 <br>
+May love surround you 💕 <br>
+And may you shine forever 🌟
 
 </p>
 </div>
@@ -145,10 +159,10 @@ And may you always shine 💖
 <p>
 
 Today is your special day 🎂 <br>
-May it bring joy and laughter 🎉 <br>
-May your future be bright 🌟 <br>
-May love surround you always 💕 <br>
-And happiness stay with you forever 😊
+May joy fill your heart 🎉 <br>
+May success follow you 🌟 <br>
+May your future be bright ✨ <br>
+And happiness stay forever 💖
 
 </p>
 </div>
@@ -173,6 +187,15 @@ And happiness stay with you forever 😊
 <div class="heart" style="left:50%">❤️</div>
 <div class="heart" style="left:70%">❤️</div>
 <div class="heart" style="left:90%">❤️</div>
+
+<script>
+
+function openSurprise(){
+document.getElementById("tap").style.display="none";
+document.getElementById("slider").style.display="flex";
+}
+
+</script>
 
 </body>
 </html>
