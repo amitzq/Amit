@@ -12,20 +12,31 @@ font-family:Arial;
 background:linear-gradient(135deg,#ff5f8a,#ff9eb5);
 height:100vh;
 overflow:hidden;
-color:white;
 text-align:center;
+color:white;
 }
 
-/* tap screens */
+/* glowing title */
+
+.glow{
+font-size:28px;
+color:white;
+animation:glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px #fff,0 0 20px #ff4d6d,0 0 30px #ff4d6d;}
+to{text-shadow:0 0 20px #fff,0 0 30px #ff4d6d,0 0 40px #ff4d6d;}
+}
 
 .screen{
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-font-size:28px;
 cursor:pointer;
 flex-direction:column;
+font-size:26px;
 }
 
 .tapbox{
@@ -35,8 +46,6 @@ padding:25px 35px;
 border-radius:20px;
 box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
-
-/* slider */
 
 .slider{
 display:none;
@@ -67,21 +76,21 @@ max-width:320px;
 }
 
 img{
-width:220px;
+width:230px;
 border-radius:20px;
 margin-bottom:15px;
 }
 
-/* hearts */
+/* floating love text */
 
-.heart{
+.love{
 position:absolute;
 bottom:-50px;
-font-size:28px;
-animation:love 6s linear infinite;
+font-size:22px;
+animation:float 7s linear infinite;
 }
 
-@keyframes love{
+@keyframes float{
 0%{transform:translateY(0);opacity:1;}
 100%{transform:translateY(-110vh);opacity:0;}
 }
@@ -91,90 +100,107 @@ animation:love 6s linear infinite;
 
 <body>
 
-<!-- MUSIC -->
-
 <audio id="music" loop>
 <source src="song.mp3" type="audio/mp3">
 </audio>
-
-<!-- screen 1 -->
 
 <div id="s1" class="screen" onclick="step1()">
 <div class="tapbox">🎁 Tap for your surprise</div>
 </div>
 
-<!-- screen 2 -->
-
 <div id="s2" class="screen" style="display:none;" onclick="step2()">
 <div class="tapbox">💌 Tap again to see your surprise</div>
 </div>
-
-<!-- slider -->
 
 <div class="slider" id="slider">
 
 <div class="slide">
 <div class="card">
-<img src="Snapchat-1740021833.jpg">
-<h2>🎂 Happy Birthday Cutieee 🫶❤️‍🩹😚</h2>
-<p>Swipe ➡ to see wishes</p>
+<h2 class="glow">🎂 Happy Birthday My Laxmi Bow 🫶❤️‍🩹😚</h2>
+<p>Swipe ➡ to see your memories</p>
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
-May your birthday bring happiness ✨<br>
-May your smile stay forever 😊<br>
-May your life be full of success 🌸<br>
-May your dreams come true 💫<br>
-Stay blessed always 💖
+<img src="IMG-20260221-WA002.jpg">
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
-I wish your life becomes beautiful 🌷<br>
-May peace and joy follow you 🌸<br>
-May you achieve everything you want 🌟<br>
-May your days be bright ✨<br>
-Keep smiling always 😊
+
+Happy Birthday My Laxmi Wife 🎂💖<br>
+You are the most beautiful part of my life 🌸<br>
+Your smile makes my world brighter 😊<br>
+Every moment with you feels magical ✨<br>
+I feel lucky to have you beside me 🍀<br>
+I love you forever ❤️
+
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
-Even if we don't talk like before 💭<br>
-I still wish the best for you ✨<br>
-May happiness stay with you 🌸<br>
-May love surround you 💕<br>
-And may you shine forever 🌟
+<img src="IMG-20260221-WA003.jpg">
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
-Today is your special day 🎂<br>
-May joy fill your heart 🎉<br>
-May success follow you 🌟<br>
-May your future be bright ✨<br>
-And happiness stay forever 💖
+
+May your birthday be full of happiness 🎉<br>
+May your heart always stay peaceful 🌷<br>
+May your dreams come true one day ✨<br>
+May love always surround you 💞<br>
+May success follow you everywhere 🌟<br>
+Stay blessed always ❤️
+
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
-<h2>Once Again Happy Birthday 💖</h2>
-<p>— From Amit</p>
+<img src="IMG-20260221-WA004.jpg">
+</div>
+</div>
+
+<div class="slide">
+<div class="card">
+
+Even if we don't talk like before sometimes 💭<br>
+You are always in my heart ❤️<br>
+Your presence makes life brighter ☀️<br>
+You are my happiness and peace 🌸<br>
+I promise to care for you forever 💕<br>
+Happy Birthday my love 🎂
+
+</div>
+</div>
+
+<div class="slide">
+<div class="card">
+
+<h2 class="glow">Again Happy Birthday My Laxmi Bow 🎂❤️</h2>
+
+Maybe we don't talk like before sometimes 💭<br>
+But you are always in my heart 💖<br>
+I really love you so much more than words can say 🫶<br>
+You are the most special person in my life 🌸<br>
+Your smile means everything to me 😊<br><br>
+
+<h3 class="glow">I Love You My Laxmi Bow My Cutieee 🫶😚❤️‍🩹</h3>
+
 </div>
 </div>
 
 </div>
 
-<div class="heart" style="left:10%">❤️</div>
-<div class="heart" style="left:30%">❤️</div>
-<div class="heart" style="left:50%">❤️</div>
-<div class="heart" style="left:70%">❤️</div>
-<div class="heart" style="left:90%">❤️</div>
+<div class="love" style="left:10%">I Love You ❤️</div>
+<div class="love" style="left:30%">I Love You ❤️</div>
+<div class="love" style="left:50%">I Love You ❤️</div>
+<div class="love" style="left:70%">I Love You ❤️</div>
+<div class="love" style="left:90%">I Love You ❤️</div>
 
 <script>
 
@@ -186,7 +212,6 @@ document.getElementById("s2").style.display="flex";
 function step2(){
 document.getElementById("s2").style.display="none";
 document.getElementById("slider").style.display="flex";
-
 document.getElementById("music").play();
 }
 
