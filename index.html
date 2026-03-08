@@ -9,22 +9,31 @@
 body{
 margin:0;
 font-family:Arial;
-background:linear-gradient(135deg,#ff758c,#ff7eb3);
+background:linear-gradient(135deg,#ff5f8a,#ff9eb5);
 height:100vh;
 overflow:hidden;
 color:white;
 text-align:center;
 }
 
-/* first page */
+/* tap screens */
 
-#tap{
+.screen{
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
 font-size:28px;
 cursor:pointer;
+flex-direction:column;
+}
+
+.tapbox{
+background:white;
+color:#ff4d6d;
+padding:25px 35px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* slider */
@@ -48,8 +57,6 @@ scroll-snap-align:center;
 padding:20px;
 }
 
-/* card */
-
 .card{
 background:white;
 color:#ff4d6d;
@@ -65,7 +72,7 @@ border-radius:20px;
 margin-bottom:15px;
 }
 
-/* heart animation */
+/* hearts */
 
 .heart{
 position:absolute;
@@ -84,99 +91,80 @@ animation:love 6s linear infinite;
 
 <body>
 
-<div id="tap" onclick="openSurprise()">
-🎁 Tap to Open Your Birthday Surprise
+<!-- MUSIC -->
+
+<audio id="music" loop>
+<source src="If The World Was Ending.mp3" type="audio/mp3">
+</audio>
+
+<!-- screen 1 -->
+
+<div id="s1" class="screen" onclick="step1()">
+<div class="tapbox">🎁 Tap for your surprise</div>
 </div>
 
-<div class="slider" id="slider" style="display:none;">
+<!-- screen 2 -->
 
-<!-- Slide 1 -->
+<div id="s2" class="screen" style="display:none;" onclick="step2()">
+<div class="tapbox">💌 Tap again to see your surprise</div>
+</div>
+
+<!-- slider -->
+
+<div class="slider" id="slider">
 
 <div class="slide">
 <div class="card">
-
 <img src="Snapchat-1740021833.jpg">
-
 <h2>🎂 Happy Birthday Cutieee 🫶❤️‍🩹😚</h2>
-
 <p>Swipe ➡ to see wishes</p>
-
 </div>
 </div>
-
-<!-- Slide 2 -->
 
 <div class="slide">
 <div class="card">
-<p>
-
-May your birthday bring happiness ✨ <br>
-May your smile stay forever 😊 <br>
-May your life be full of success 🌸 <br>
-May your dreams come true 💫 <br>
+May your birthday bring happiness ✨<br>
+May your smile stay forever 😊<br>
+May your life be full of success 🌸<br>
+May your dreams come true 💫<br>
 Stay blessed always 💖
-
-</p>
 </div>
 </div>
-
-<!-- Slide 3 -->
 
 <div class="slide">
 <div class="card">
-<p>
-
-I wish your life becomes beautiful 🌷 <br>
-May peace and joy follow you 🌸 <br>
-May you achieve everything you want 🌟 <br>
-May your days be bright 💫 <br>
+I wish your life becomes beautiful 🌷<br>
+May peace and joy follow you 🌸<br>
+May you achieve everything you want 🌟<br>
+May your days be bright ✨<br>
 Keep smiling always 😊
-
-</p>
 </div>
 </div>
-
-<!-- Slide 4 -->
 
 <div class="slide">
 <div class="card">
-<p>
-
-Even if we don't talk like before 💭 <br>
-I still wish the best for you ✨ <br>
-May happiness stay with you 🌸 <br>
-May love surround you 💕 <br>
+Even if we don't talk like before 💭<br>
+I still wish the best for you ✨<br>
+May happiness stay with you 🌸<br>
+May love surround you 💕<br>
 And may you shine forever 🌟
-
-</p>
 </div>
 </div>
-
-<!-- Slide 5 -->
 
 <div class="slide">
 <div class="card">
-<p>
-
-Today is your special day 🎂 <br>
-May joy fill your heart 🎉 <br>
-May success follow you 🌟 <br>
-May your future be bright ✨ <br>
+Today is your special day 🎂<br>
+May joy fill your heart 🎉<br>
+May success follow you 🌟<br>
+May your future be bright ✨<br>
 And happiness stay forever 💖
-
-</p>
 </div>
 </div>
-
-<!-- Slide 6 -->
 
 <div class="slide">
 <div class="card">
-
-<h2>Once Again Happy Birthday Cutieee 💖</h2>
-
+<h2>Once Again Happy Birthday 💖</h2>
 <p>— From Amit</p>
-
 </div>
 </div>
 
@@ -190,9 +178,16 @@ And happiness stay forever 💖
 
 <script>
 
-function openSurprise(){
-document.getElementById("tap").style.display="none";
+function step1(){
+document.getElementById("s1").style.display="none";
+document.getElementById("s2").style.display="flex";
+}
+
+function step2(){
+document.getElementById("s2").style.display="none";
 document.getElementById("slider").style.display="flex";
+
+document.getElementById("music").play();
 }
 
 </script>
