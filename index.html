@@ -10,21 +10,21 @@
 body{
 margin:0;
 font-family:Arial;
-background:linear-gradient(135deg,#ff758c,#ff7eb3);
+background:#ff6f91;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-overflow:hidden;
 color:white;
 text-align:center;
+overflow:hidden;
 }
 
-/* tap screen */
+/* tap screens */
 
-#tap{
-cursor:pointer;
+#tap,#tap2{
 font-size:28px;
+cursor:pointer;
 }
 
 /* slider */
@@ -34,7 +34,6 @@ display:none;
 width:100%;
 height:100vh;
 overflow-x:auto;
-display:flex;
 scroll-snap-type:x mandatory;
 }
 
@@ -82,21 +81,27 @@ animation:float 6s linear infinite;
 
 <body>
 
-<!-- song -->
-
-<audio id="music" loop>
+<audio id="music">
 <source src="song.mp3" type="audio/mp3">
 </audio>
 
-<!-- tap -->
+<!-- tap 1 -->
 
-<div id="tap" onclick="openCard()">
+<div id="tap" onclick="step1()">
 
-🎁 Tap to open your birthday wish
+🎁 Tap for your surprise
 
 </div>
 
-<!-- slides -->
+<!-- tap 2 -->
+
+<div id="tap2" style="display:none;" onclick="step2()">
+
+💌 Tap again
+
+</div>
+
+<!-- slider -->
 
 <div class="slider" id="slider">
 
@@ -118,7 +123,6 @@ Swipe ➡️
 I know we don't talk much anymore 💭<br>
 But I still wish you happiness today<br>
 Hope your day is filled with smiles 😊<br>
-And beautiful moments ✨<br>
 Stay happy always ❤️
 
 </div>
@@ -129,7 +133,6 @@ Stay happy always ❤️
 
 Even though things changed between us<br>
 I still respect the memories we had 🌸<br>
-Some memories always stay special 💖<br>
 Wishing you success and happiness ⭐<br>
 Have a wonderful birthday 🎂
 
@@ -139,25 +142,10 @@ Have a wonderful birthday 🎂
 <div class="slide">
 <div class="card">
 
-Life moves on and people change<br>
-But some memories stay forever 💭<br>
-I truly wish the best for you 🌷<br>
-Stay blessed and keep smiling 😊<br>
-You deserve happiness 💞
+<h2>Once Again Happy Birthday 💖</h2>
 
-</div>
-</div>
-
-<div class="slide">
-<div class="card">
-
-<h2>Again Happy Birthday 🎂</h2>
-
-No matter how far life takes us<br>
-I hope you always find happiness ✨<br>
-Take care of yourself 🌸<br><br>
-
-I wish you a beautiful life ahead ❤️
+Take care of yourself 🌷<br>
+Stay blessed and happy always ✨
 
 </div>
 </div>
@@ -167,19 +155,22 @@ I wish you a beautiful life ahead ❤️
 <!-- hearts -->
 
 <div class="heart" style="left:20%">❤️</div>
-<div class="heart" style="left:40%">💖</div>
-<div class="heart" style="left:60%">❤️</div>
-<div class="heart" style="left:80%">💖</div>
+<div class="heart" style="left:50%">💖</div>
+<div class="heart" style="left:80%">❤️</div>
 
 <script>
 
-function openCard(){
+function step1(){
 
 document.getElementById("tap").style.display="none";
+document.getElementById("tap2").style.display="block";
 
-document.getElementById("slider").style.display="flex";
+}
 
-/* play song */
+function step2(){
+
+document.getElementById("tap2").style.display="none";
+document.getElementById("slider").style.display="block";
 
 document.getElementById("music").play();
 
