@@ -1,204 +1,163 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Wish</title>
-
-<style>
-  /* cute bunny animation */
-
-.bunny{
-position:fixed;
-bottom:-50px;
-font-size:30px;
-animation:bunnyFloat 8s linear infinite;
-}
-
-@keyframes bunnyFloat{
-
-0%{
-transform:translateY(0);
-opacity:1;
-}
-
-100%{
-transform:translateY(-110vh);
-opacity:0;
-}
-
-}
+<title>Birthday Surprise</title><style>
 
 body{
 margin:0;
-font-family:Arial;
-background:#ff6f91;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
+background:linear-gradient(180deg,#000000,#33001a);
 color:white;
+font-family:Arial;
 text-align:center;
 overflow:hidden;
 }
 
-/* tap screens */
-
-#tap,#tap2{
-font-size:28px;
-cursor:pointer;
-}
-
-/* slider */
-
-.slider{
-display:none;
-width:100%;
-height:100vh;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-}
-
-.slide{
-min-width:100%;
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-scroll-snap-align:center;
-}
-
-.card{
-background:white;
-color:#ff4d6d;
-padding:25px;
-border-radius:20px;
-max-width:320px;
-}
-
-img{
-width:230px;
-border-radius:20px;
-margin-bottom:15px;
-}
-
-/* hearts */
+/* floating hearts */
 
 .heart{
-position:absolute;
-bottom:-40px;
-font-size:22px;
+position:fixed;
+bottom:-10px;
+font-size:20px;
+color:#ff4d6d;
 animation:float 6s linear infinite;
 }
 
 @keyframes float{
-0%{transform:translateY(0)}
-100%{transform:translateY(-120vh)}
+0%{transform:translateY(0);opacity:1}
+100%{transform:translateY(-100vh);opacity:0}
 }
 
-</style>
+/* slides */
 
-</head>
+.slide{
+display:none;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+}
 
-<body>
+.active{
+display:flex;
+}
 
-<audio id="music">
-<source src="song.mp3" type="audio/mp3">
-</audio>
+/* typing intro */
 
-<!-- tap 1 -->
+.typing{
+font-size:34px;
+border-right:3px solid white;
+white-space:nowrap;
+overflow:hidden;
+width:0;
+animation:typing 4s steps(30,end) forwards, blink .8s infinite;
+}
 
-<div id="tap" onclick="step1()">
+@keyframes typing{
+from{width:0}
+to{width:100%}
+}
 
-🎁 Tap for your surprise
+@keyframes blink{
+50%{border-color:transparent}
+}
 
-</div>
+/* photo */
 
-<!-- tap 2 -->
+img{
+width:300px;
+border-radius:20px;
+box-shadow:0 0 30px #ff2d75;
+margin-bottom:20px;
+}
 
-<div id="tap2" style="display:none;" onclick="step2()">
+/* button */
 
-💌 Tap again
+button{
+padding:12px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:#ff2d75;
+color:white;
+cursor:pointer;
+margin-top:20px;
+}
 
-</div>
+/* glow */
 
-<!-- slider -->
+.glow{
+font-size:40px;
+text-shadow:
+0 0 5px #ff2d75,
+0 0 10px #ff2d75,
+0 0 20px #ff2d75,
+0 0 40px #ff2d75,
+0 0 80px #ff2d75;
+}
 
-<div class="slider" id="slider">
+</style></head><body><audio id="song" src="song.mp3"></audio>
 
-<div class="slide">
-<div class="card">
+<!-- Slide 1 --><div class="slide active" id="s1"><h1 class="typing">For Someone Special ❤️</h1><button onclick="start()">Tap For Surprise</button>
 
-<img src="Snapchat-1740021833.jpg">
+</div><!-- Slide 2 --><div class="slide" id="s2"><img src="photo.jpg"><button onclick="next()">Tap Next ➜</button>
 
-<h2>Happy Birthday Cutieee 🫶❤️‍🩹😚</h2>
+</div><!-- Slide 3 --><div class="slide" id="s3"><h1 class="glow">Happy Birthday Cutiee ❤️‍🩹🧿🫶</h1><button onclick="next()">Tap Next ➜</button>
 
-Swipe ➡️
+</div><!-- Slide 4 --><div class="slide" id="s4"><p>
+Happy Birthday to someone who once meant a lot to me.  
+Maybe we don’t talk like before, but the memories are still special.  
+I wish your life becomes full of happiness and success.  
+May every day bring you joy and beautiful moments.  
+Stay blessed and keep smiling always ❤️
+</p><button onclick="next()">Tap Next ➜</button>
 
-</div>
-</div>
+</div><!-- Slide 5 --><div class="slide" id="s5"><h1 class="glow">Again Happy Birthday ❤️‍🩹🫶</h1></div><script>
 
-<div class="slide">
-<div class="card">
+let current=1
 
-I know we don't talk much anymore 💭<br>
-But I still wish you happiness today<br>
-Hope your day is filled with smiles 😊<br>
-Stay happy always ❤️
+function start(){
 
-</div>
-</div>
+document.getElementById("s1").classList.remove("active")
+document.getElementById("s2").classList.add("active")
 
-<div class="slide">
-<div class="card">
+document.getElementById("song").play()
 
-Even though things changed between us<br>
-I still respect the memories we had 🌸<br>
-Wishing you success and happiness ⭐<br>
-Have a wonderful birthday 🎂
-
-</div>
-</div>
-
-<div class="slide">
-<div class="card">
-
-<h2>Once Again Happy Birthday 💖</h2>
-
-Take care of yourself 🌷<br>
-Stay blessed and happy always ✨
-
-</div>
-</div>
-
-</div>
-
-<!-- hearts -->
-
-<div class="heart" style="left:20%">❤️</div>
-<div class="heart" style="left:50%">💖</div>
-<div class="heart" style="left:80%">❤️</div>
-
-<script>
-
-function step1(){
-
-document.getElementById("tap").style.display="none";
-document.getElementById("tap2").style.display="block";
+current=2
 
 }
 
-function step2(){
+function next(){
 
-document.getElementById("tap2").style.display="none";
-document.getElementById("slider").style.display="block";
+document.getElementById("s"+current).classList.remove("active")
 
-document.getElementById("music").play();
+current++
+
+document.getElementById("s"+current).classList.add("active")
 
 }
 
-</script>
+/* floating hearts */
 
-</body>
+setInterval(function(){
+
+let heart=document.createElement("div")
+
+heart.className="heart"
+
+heart.innerHTML="❤️"
+
+heart.style.left=Math.random()*100+"vw"
+
+heart.style.fontSize=(Math.random()*20+10)+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+heart.remove()
+},6000)
+
+},300)
+
+</script></body>
 </html>
