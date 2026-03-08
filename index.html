@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Birthday Surprise</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
@@ -18,20 +20,44 @@ text-align:center;
 color:white;
 }
 
-/* title glow */
+/* progress bar */
 
-.glow{
+.progress{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:4px;
+background:rgba(255,255,255,0.3);
+}
+
+.bar{
+height:100%;
+width:0%;
+background:white;
+}
+
+/* typing title */
+
+.typing{
 font-family:'Great Vibes',cursive;
 font-size:40px;
-animation:glow 1.5s infinite alternate;
+overflow:hidden;
+white-space:nowrap;
+border-right:3px solid white;
+animation:typing 3s steps(30,end),blink 0.8s infinite;
 }
 
-@keyframes glow{
-from{text-shadow:0 0 10px #fff,0 0 20px #ff4d6d;}
-to{text-shadow:0 0 25px #fff,0 0 40px #ff4d6d;}
+@keyframes typing{
+from{width:0}
+to{width:100%}
 }
 
-/* tap screens */
+@keyframes blink{
+50%{border-color:transparent}
+}
+
+/* tap screen */
 
 .screen{
 display:flex;
@@ -53,12 +79,6 @@ font-size:24px;
 .hint{
 margin-top:15px;
 animation:blink 1.5s infinite;
-}
-
-@keyframes blink{
-0%{opacity:1}
-50%{opacity:0.4}
-100%{opacity:1}
 }
 
 /* slider */
@@ -95,44 +115,41 @@ border-radius:20px;
 margin-bottom:10px;
 }
 
-/* floating hearts */
+/* heart rain */
 
-.floatHeart{
+.rainHeart{
 position:absolute;
-bottom:-40px;
+top:-50px;
 font-size:22px;
-animation:float 6s linear infinite;
+animation:fall 6s linear infinite;
 }
 
-@keyframes float{
+@keyframes fall{
 0%{transform:translateY(0)}
-100%{transform:translateY(-120vh)}
+100%{transform:translateY(110vh)}
 }
 
-/* HEART BURST */
+/* final pulse */
 
-.burst{
-position:absolute;
-font-size:22px;
-pointer-events:none;
-animation:explode 1s forwards;
+.pulse{
+animation:pulse 1.5s infinite;
 }
 
-@keyframes explode{
-0%{
-transform:scale(0);
-opacity:1;
-}
-100%{
-transform:translateY(-120px) scale(2);
-opacity:0;
-}
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.1)}
+100%{transform:scale(1)}
 }
 
 </style>
+
 </head>
 
 <body>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
 
 <audio id="music" loop>
 <source src="song.mp3" type="audio/mp3">
@@ -156,13 +173,13 @@ opacity:0;
 
 </div>
 
-<!-- SLIDER -->
+<!-- SLIDES -->
 
 <div class="slider" id="slider">
 
 <div class="slide">
 <div class="card">
-<h2 class="glow">Happy Birthday My Laxmi Bow 🫶😚❤️</h2>
+<h2 class="typing">Happy Birthday My Laxmi Bow 🫶😚❤️</h2>
 <p>Swipe ➡️</p>
 </div>
 </div>
@@ -206,7 +223,7 @@ I love you forever ❤️
 <div class="slide">
 <div class="card">
 
-<h2 class="glow">Again Happy Birthday My Laxmi Bow 🎂❤️</h2>
+<h2>Again Happy Birthday My Laxmi Bow 🎂❤️</h2>
 
 Maybe we don't talk like before sometimes 💭<br>
 But you are always in my heart 💖<br>
@@ -214,59 +231,27 @@ I really love you so much 🫶<br>
 You are the most special person in my life 🌸<br>
 Your smile means everything to me 😊<br><br>
 
-<h3>I Love You My Laxmi Bow My Cutieee 🫶😚❤️‍🩹</h3>
+<h3 class="pulse">
+I Love You My Laxmi Bow My Cutieee 🫶😚❤️‍🩹
+</h3>
 
 </div>
 </div>
 
 </div>
 
-<!-- floating hearts -->
+<!-- heart rain -->
 
-<div class="floatHeart" style="left:20%">❤️</div>
-<div class="floatHeart" style="left:50%">💖</div>
-<div class="floatHeart" style="left:80%">❤️</div>
+<div class="rainHeart" style="left:20%">❤️</div>
+<div class="rainHeart" style="left:40%">💖</div>
+<div class="rainHeart" style="left:60%">❤️</div>
+<div class="rainHeart" style="left:80%">💖</div>
 
 <script>
 
-/* HEART BURST */
-
-function burst(x,y){
-
-for(let i=0;i<20;i++){
-
-let h=document.createElement("div");
-
-h.className="burst";
-
-h.innerHTML="❤️";
-
-h.style.left=x+"px";
-h.style.top=y+"px";
-
-document.body.appendChild(h);
-
-setTimeout(()=>{h.remove()},1000);
-
-}
-
-}
-
-/* global tap burst */
-
-document.addEventListener("click",function(e){
-
-burst(e.clientX,e.clientY);
-
-});
-
-/* steps */
-
 function next1(){
-
 document.getElementById("s1").style.display="none";
 document.getElementById("s2").style.display="flex";
-
 }
 
 function next2(){
@@ -275,6 +260,8 @@ document.getElementById("s2").style.display="none";
 document.getElementById("slider").style.display="flex";
 
 document.getElementById("music").play();
+
+document.getElementById("bar").style.width="100%";
 
 }
 
