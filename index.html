@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Sriyanka</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+/* floating balloons animation */
+
+.balloon{
+position:absolute;
+bottom:-150px;
+font-size:40px;
+animation:float 8s infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
+}
+
+/* swipe cards */
+
+.container{
+display:flex;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+gap:20px;
+padding:30px;
+width:100%;
+}
+
+.card{
+min-width:280px;
+height:200px;
+background:white;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+font-size:18px;
+scroll-snap-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- background song -->
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+
+<!-- balloons -->
+
+<div class="balloon" style="left:10%">🎈</div>
+<div class="balloon" style="left:30%">🎈</div>
+<div class="balloon" style="left:50%">🎈</div>
+<div class="balloon" style="left:70%">🎈</div>
+<div class="balloon" style="left:90%">🎈</div>
+
+<div class="container">
+
+<div class="card">
+🎂 Happy Birthday Sriyanka 💖<br><br>
+Swipe ➡ to see your wishes ✨
+</div>
+
+<div class="card">
+Happy Birthday Chikni 😘<br><br>
+May your life be full of happiness 🌸
+</div>
+
+<div class="card">
+Even if we don't talk much now,<br>
+I still wish you the best always 💫
+</div>
+
+<div class="card">
+May all your dreams come true<br>
+and your smile never fade 😊
+</div>
+
+<div class="card">
+Always stay happy Chikni ❤️<br><br>
+— From Amit
+</div>
+
+</div>
+
+</body>
+</html>
