@@ -1,81 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Birthday Surprise</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#ff4d6d,#ff8fa3);
+font-family:Arial;
+background:linear-gradient(135deg,#ff5f8a,#ff9eb5);
 height:100vh;
 overflow:hidden;
 color:white;
 text-align:center;
 }
 
-/* story progress */
-
-.storyBar{
-position:fixed;
-top:8px;
-left:10px;
-right:10px;
-display:flex;
-gap:5px;
-z-index:10;
-}
-
-.storyBar span{
-flex:1;
-height:4px;
-background:rgba(255,255,255,0.3);
-border-radius:10px;
-overflow:hidden;
-}
-
-.storyBar span i{
-display:block;
-height:100%;
-width:0%;
-background:white;
-}
-
-/* typing title */
-
-.typing{
-font-family:'Great Vibes',cursive;
-font-size:42px;
-overflow:hidden;
-white-space:nowrap;
-border-right:3px solid white;
-animation:typing 3s steps(30,end),blink 0.7s infinite;
-}
-
-@keyframes typing{
-from{width:0}
-to{width:100%}
-}
-
-@keyframes blink{
-50%{border-color:transparent}
-}
-
-/* tap screen */
+/* tap screens */
 
 .screen{
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-flex-direction:column;
+font-size:28px;
 cursor:pointer;
+flex-direction:column;
 }
 
 .tapbox{
@@ -83,39 +33,7 @@ background:white;
 color:#ff4d6d;
 padding:25px 35px;
 border-radius:20px;
-font-size:24px;
-}
-
-.hint{
-margin-top:15px;
-animation:blink 1.5s infinite;
-}
-
-/* love letter */
-
-.envelope{
-width:200px;
-height:120px;
-background:white;
-position:relative;
-border-radius:6px;
-cursor:pointer;
-}
-
-.flap{
-position:absolute;
-top:0;
-width:0;
-height:0;
-border-left:100px solid transparent;
-border-right:100px solid transparent;
-border-top:60px solid #ff4d6d;
-transition:1s;
-}
-
-.open .flap{
-transform:rotateX(180deg);
-transform-origin:top;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* slider */
@@ -126,16 +44,16 @@ display:flex;
 overflow-x:auto;
 scroll-snap-type:x mandatory;
 width:100%;
-height:100vh;
 }
 
 .slide{
 min-width:100%;
-scroll-snap-align:center;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
+scroll-snap-align:center;
 padding:20px;
 }
 
@@ -144,85 +62,51 @@ background:white;
 color:#ff4d6d;
 padding:25px;
 border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 max-width:320px;
 }
 
 img{
-width:230px;
+width:220px;
 border-radius:20px;
-margin-bottom:10px;
+margin-bottom:15px;
 }
 
-/* heart rain */
+/* hearts */
 
-.rainHeart{
+.heart{
 position:absolute;
-top:-40px;
-font-size:20px;
-animation:fall 6s linear infinite;
+bottom:-50px;
+font-size:28px;
+animation:love 6s linear infinite;
 }
 
-@keyframes fall{
-0%{transform:translateY(0)}
-100%{transform:translateY(110vh)}
-}
-
-/* confetti */
-
-.confetti{
-position:absolute;
-top:-20px;
-font-size:20px;
-animation:fall 4s linear infinite;
-}
-
-/* pulse text */
-
-.pulse{
-animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.1)}
-100%{transform:scale(1)}
+@keyframes love{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="storyBar">
-<span><i id="p1"></i></span>
-<span><i id="p2"></i></span>
-<span><i id="p3"></i></span>
-</div>
+<!-- MUSIC -->
 
 <audio id="music" loop>
 <source src="song.mp3" type="audio/mp3">
 </audio>
 
-<!-- tap 1 -->
+<!-- screen 1 -->
 
 <div id="s1" class="screen" onclick="step1()">
 <div class="tapbox">🎁 Tap for your surprise</div>
-<div class="hint">Tap to continue ❤️</div>
 </div>
 
-<!-- love letter -->
+<!-- screen 2 -->
 
-<div id="letter" class="screen" style="display:none;">
-
-<div class="envelope" onclick="openLetter()" id="env">
-
-<div class="flap"></div>
-
-</div>
-
-<div class="hint">Tap the letter 💌</div>
-
+<div id="s2" class="screen" style="display:none;" onclick="step2()">
+<div class="tapbox">💌 Tap again to see your surprise</div>
 </div>
 
 <!-- slider -->
@@ -231,112 +115,79 @@ animation:pulse 1.5s infinite;
 
 <div class="slide">
 <div class="card">
-<h2 class="typing">Happy Birthday My Laxmi Bow 🫶😚❤️</h2>
-<p>Swipe ➡️</p>
+<img src="Snapchat-1740021833.jpg">
+<h2>🎂 Happy Birthday Cutieee 🫶❤️‍🩹😚</h2>
+<p>Swipe ➡ to see wishes</p>
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
-<img src="IMG-20260221-WA0029.jpg">
-<p>Swipe ➡️</p>
+May your birthday bring happiness ✨<br>
+May your smile stay forever 😊<br>
+May your life be full of success 🌸<br>
+May your dreams come true 💫<br>
+Stay blessed always 💖
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
-
-Happy Birthday My Laxmi Wife 🎂💖<br>
-You are the most beautiful part of my life 🌸<br>
-Your smile makes my world brighter 😊<br>
-Every moment with you feels magical ✨<br>
-I feel lucky to have you beside me 🍀<br>
-I love you forever ❤️
-
-<p>Swipe ➡️</p>
-
+I wish your life becomes beautiful 🌷<br>
+May peace and joy follow you 🌸<br>
+May you achieve everything you want 🌟<br>
+May your days be bright ✨<br>
+Keep smiling always 😊
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
-<img src="IMG-20260221-WA0031.jpg">
-<p>Swipe ➡️</p>
+Even if we don't talk like before 💭<br>
+I still wish the best for you ✨<br>
+May happiness stay with you 🌸<br>
+May love surround you 💕<br>
+And may you shine forever 🌟
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
-<img src="IMG-20260221-WA0033.jpg">
-<p>Swipe ➡️</p>
+Today is your special day 🎂<br>
+May joy fill your heart 🎉<br>
+May success follow you 🌟<br>
+May your future be bright ✨<br>
+And happiness stay forever 💖
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
-
-<h2>Again Happy Birthday My Laxmi Bow 🎂❤️</h2>
-
-Maybe we don't talk like before sometimes 💭<br>
-But you are always in my heart 💖<br>
-I really love you so much 🫶<br>
-You are the most special person in my life 🌸<br>
-Your smile means everything to me 😊<br><br>
-
-<h3 class="pulse">I Love You My Laxmi Bow My Cutieee 🫶😚❤️‍🩹</h3>
-
+<h2>Once Again Happy Birthday 💖</h2>
+<p>— From Amit</p>
 </div>
 </div>
 
 </div>
 
-<!-- heart rain -->
-
-<div class="rainHeart" style="left:20%">❤️</div>
-<div class="rainHeart" style="left:40%">💖</div>
-<div class="rainHeart" style="left:60%">❤️</div>
-<div class="rainHeart" style="left:80%">💖</div>
-
-<!-- confetti -->
-
-<div class="confetti" style="left:10%">🎉</div>
-<div class="confetti" style="left:50%">🎊</div>
-<div class="confetti" style="left:80%">🎉</div>
+<div class="heart" style="left:10%">❤️</div>
+<div class="heart" style="left:30%">❤️</div>
+<div class="heart" style="left:50%">❤️</div>
+<div class="heart" style="left:70%">❤️</div>
+<div class="heart" style="left:90%">❤️</div>
 
 <script>
 
 function step1(){
-
 document.getElementById("s1").style.display="none";
-document.getElementById("letter").style.display="flex";
-
+document.getElementById("s2").style.display="flex";
 }
 
-function openLetter(){
-
-document.getElementById("env").classList.add("open");
-
-setTimeout(()=>{
-
-document.getElementById("letter").style.display="none";
+function step2(){
+document.getElementById("s2").style.display="none";
 document.getElementById("slider").style.display="flex";
 
 document.getElementById("music").play();
-
-startProgress();
-
-},1000)
-
-}
-
-function startProgress(){
-
-document.getElementById("p1").style.width="100%";
-
-setTimeout(()=>{document.getElementById("p2").style.width="100%"},3000);
-
-setTimeout(()=>{document.getElementById("p3").style.width="100%"},6000);
-
 }
 
 </script>
