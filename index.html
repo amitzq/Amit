@@ -91,6 +91,33 @@ margin-top:15px;
 animation:blink 1.5s infinite;
 }
 
+/* love letter */
+
+.envelope{
+width:200px;
+height:120px;
+background:white;
+position:relative;
+border-radius:6px;
+cursor:pointer;
+}
+
+.flap{
+position:absolute;
+top:0;
+width:0;
+height:0;
+border-left:100px solid transparent;
+border-right:100px solid transparent;
+border-top:60px solid #ff4d6d;
+transition:1s;
+}
+
+.open .flap{
+transform:rotateX(180deg);
+transform-origin:top;
+}
+
 /* slider */
 
 .slider{
@@ -140,6 +167,15 @@ animation:fall 6s linear infinite;
 100%{transform:translateY(110vh)}
 }
 
+/* confetti */
+
+.confetti{
+position:absolute;
+top:-20px;
+font-size:20px;
+animation:fall 4s linear infinite;
+}
+
 /* pulse text */
 
 .pulse{
@@ -175,11 +211,18 @@ animation:pulse 1.5s infinite;
 <div class="hint">Tap to continue ❤️</div>
 </div>
 
-<!-- tap 2 -->
+<!-- love letter -->
 
-<div id="s2" class="screen" style="display:none;" onclick="step2()">
-<div class="tapbox">💌 Tap again</div>
-<div class="hint">Tap to open surprise 💖</div>
+<div id="letter" class="screen" style="display:none;">
+
+<div class="envelope" onclick="openLetter()" id="env">
+
+<div class="flap"></div>
+
+</div>
+
+<div class="hint">Tap the letter 💌</div>
+
 </div>
 
 <!-- slider -->
@@ -254,30 +297,45 @@ Your smile means everything to me 😊<br><br>
 <div class="rainHeart" style="left:60%">❤️</div>
 <div class="rainHeart" style="left:80%">💖</div>
 
+<!-- confetti -->
+
+<div class="confetti" style="left:10%">🎉</div>
+<div class="confetti" style="left:50%">🎊</div>
+<div class="confetti" style="left:80%">🎉</div>
+
 <script>
 
 function step1(){
+
 document.getElementById("s1").style.display="none";
-document.getElementById("s2").style.display="flex";
+document.getElementById("letter").style.display="flex";
+
 }
 
-function step2(){
-document.getElementById("s2").style.display="none";
+function openLetter(){
+
+document.getElementById("env").classList.add("open");
+
+setTimeout(()=>{
+
+document.getElementById("letter").style.display="none";
 document.getElementById("slider").style.display="flex";
+
 document.getElementById("music").play();
+
 startProgress();
+
+},1000)
+
 }
 
 function startProgress(){
 
-let p1=document.getElementById("p1");
-let p2=document.getElementById("p2");
-let p3=document.getElementById("p3");
+document.getElementById("p1").style.width="100%";
 
-p1.style.width="100%";
+setTimeout(()=>{document.getElementById("p2").style.width="100%"},3000);
 
-setTimeout(()=>{p2.style.width="100%"},3000);
-setTimeout(()=>{p3.style.width="100%"},6000);
+setTimeout(()=>{document.getElementById("p3").style.width="100%"},6000);
 
 }
 
