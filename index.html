@@ -20,11 +20,11 @@ color:white;
 text-align:center;
 }
 
-/* tap screens */
+/* tap screen */
 
-#tap,#tap2{
+#tap{
 cursor:pointer;
-font-size:26px;
+font-size:28px;
 }
 
 /* slider */
@@ -82,20 +82,18 @@ animation:float 6s linear infinite;
 
 <body>
 
+<!-- song -->
+
 <audio id="music" loop>
 <source src="song.mp3" type="audio/mp3">
 </audio>
 
-<!-- tap 1 -->
+<!-- tap -->
 
-<div id="tap" onclick="step1()">
-🎁 Tap for your surprise
-</div>
+<div id="tap" onclick="openCard()">
 
-<!-- tap 2 -->
+🎁 Tap to open your birthday wish
 
-<div id="tap2" style="display:none;" onclick="step2()">
-💌 Tap again
 </div>
 
 <!-- slides -->
@@ -142,7 +140,7 @@ Have a wonderful birthday 🎂
 <div class="card">
 
 Life moves on and people change<br>
-But some feelings stay somewhere 💭<br>
+But some memories stay forever 💭<br>
 I truly wish the best for you 🌷<br>
 Stay blessed and keep smiling 😊<br>
 You deserve happiness 💞
@@ -175,103 +173,16 @@ I wish you a beautiful life ahead ❤️
 
 <script>
 
-function step1(){
+function openCard(){
+
 document.getElementById("tap").style.display="none";
-document.getElementById("tap2").style.display="block";
-}
 
-function step2(){
-document.getElementById("tap2").style.display="none";
-document.getElementById("slider").style.display="flex";
-document.getElementById("music").play();
-}
-
-</script>
-
-</body>
-</html><div id="s2" class="screen" style="display:none;" onclick="step2()">
-<div class="tapbox">💌 Tap again to see your surprise</div>
-</div>
-
-<!-- slider -->
-
-<div class="slider" id="slider">
-
-<div class="slide">
-<div class="card">
-<img src="Snapchat-1740021833.jpg">
-<h2>🎂 Happy Birthday Cutieee 🫶❤️‍🩹😚</h2>
-<p>Swipe ➡ to see wishes</p>
-</div>
-</div>
-
-<div class="slide">
-<div class="card">
-May your birthday bring happiness ✨<br>
-May your smile stay forever 😊<br>
-May your life be full of success 🌸<br>
-May your dreams come true 💫<br>
-Stay blessed always 💖
-</div>
-</div>
-
-<div class="slide">
-<div class="card">
-I wish your life becomes beautiful 🌷<br>
-May peace and joy follow you 🌸<br>
-May you achieve everything you want 🌟<br>
-May your days be bright ✨<br>
-Keep smiling always 😊
-</div>
-</div>
-
-<div class="slide">
-<div class="card">
-Even if we don't talk like before 💭<br>
-I still wish the best for you ✨<br>
-May happiness stay with you 🌸<br>
-May love surround you 💕<br>
-And may you shine forever 🌟
-</div>
-</div>
-
-<div class="slide">
-<div class="card">
-Today is your special day 🎂<br>
-May joy fill your heart 🎉<br>
-May success follow you 🌟<br>
-May your future be bright ✨<br>
-And happiness stay forever 💖
-</div>
-</div>
-
-<div class="slide">
-<div class="card">
-<h2>Once Again Happy Birthday 💖</h2>
-<p>— From Amit</p>
-</div>
-</div>
-
-</div>
-
-<div class="heart" style="left:10%">❤️</div>
-<div class="heart" style="left:30%">❤️</div>
-<div class="heart" style="left:50%">❤️</div>
-<div class="heart" style="left:70%">❤️</div>
-<div class="heart" style="left:90%">❤️</div>
-
-<script>
-
-function step1(){
-document.getElementById("s1").style.display="none";
-document.getElementById("s2").style.display="flex";
-}
-
-function step2(){
-document.getElementById("s2").style.display="none";
 document.getElementById("slider").style.display="flex";
 
+/* play song */
+
 document.getElementById("music").play();
+
 }
 
 </script>
