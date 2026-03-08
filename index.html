@@ -9,33 +9,45 @@
 body{
 margin:0;
 font-family:Arial;
-background:linear-gradient(135deg,#ff5f8a,#ff9eb5);
+background:linear-gradient(135deg,#ff4d6d,#ff8fa3);
 height:100vh;
 overflow:hidden;
 text-align:center;
 color:white;
 }
 
-/* glowing title */
+/* neon LOVE background */
 
-.glow{
-font-size:28px;
-color:white;
-animation:glow 2s ease-in-out infinite alternate;
+.bgLove{
+position:absolute;
+width:100%;
+height:100%;
+overflow:hidden;
+z-index:-1;
 }
 
-@keyframes glow{
-from{text-shadow:0 0 10px #fff,0 0 20px #ff4d6d,0 0 30px #ff4d6d;}
-to{text-shadow:0 0 20px #fff,0 0 30px #ff4d6d,0 0 40px #ff4d6d;}
+.bgLove span{
+position:absolute;
+color:#fff;
+font-size:22px;
+opacity:0.25;
+animation:float 10s linear infinite;
 }
+
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
+}
+
+/* tap screen */
 
 .screen{
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-cursor:pointer;
 flex-direction:column;
+cursor:pointer;
 font-size:26px;
 }
 
@@ -46,6 +58,44 @@ padding:25px 35px;
 border-radius:20px;
 box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
+
+/* love letter */
+
+.envelope{
+width:260px;
+height:160px;
+background:white;
+border-radius:10px;
+position:relative;
+cursor:pointer;
+}
+
+.flap{
+position:absolute;
+top:0;
+border-left:130px solid transparent;
+border-right:130px solid transparent;
+border-top:80px solid #ff4d6d;
+}
+
+.letter{
+position:absolute;
+top:20px;
+left:10px;
+right:10px;
+background:white;
+color:#ff4d6d;
+padding:15px;
+border-radius:10px;
+transform:translateY(100px);
+transition:1s;
+}
+
+.open .letter{
+transform:translateY(-40px);
+}
+
+/* slider */
 
 .slider{
 display:none;
@@ -71,34 +121,37 @@ background:white;
 color:#ff4d6d;
 padding:25px;
 border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
 max-width:320px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 img{
 width:230px;
 border-radius:20px;
-margin-bottom:15px;
+margin-bottom:10px;
 }
 
-/* floating love text */
+/* heart animation */
 
-.love{
+.heart{
 position:absolute;
 bottom:-50px;
 font-size:22px;
-animation:float 7s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-110vh);opacity:0;}
+animation:float 6s linear infinite;
 }
 
 </style>
 </head>
 
 <body>
+
+<div class="bgLove">
+<span style="left:10%">LOVE</span>
+<span style="left:30%">LOVE</span>
+<span style="left:50%">LOVE</span>
+<span style="left:70%">LOVE</span>
+<span style="left:90%">LOVE</span>
+</div>
 
 <audio id="music" loop>
 <source src="song.mp3" type="audio/mp3">
@@ -109,21 +162,29 @@ animation:float 7s linear infinite;
 </div>
 
 <div id="s2" class="screen" style="display:none;" onclick="step2()">
-<div class="tapbox">💌 Tap again to see your surprise</div>
+<div class="tapbox">💌 Tap again</div>
+</div>
+
+<div id="letterScreen" class="screen" style="display:none;">
+
+<div class="envelope" id="env" onclick="openLetter()">
+
+<div class="flap"></div>
+
+<div class="letter">
+<h3>Happy Birthday<br>My Laxmi Bow ❤️</h3>
+<p>Tap again to see your memories</p>
+</div>
+
+</div>
+
 </div>
 
 <div class="slider" id="slider">
 
 <div class="slide">
 <div class="card">
-<h2 class="glow">🎂 Happy Birthday My Laxmi Bow 🫶❤️‍🩹😚</h2>
-<p>Swipe ➡ to see your memories</p>
-</div>
-</div>
-
-<div class="slide">
-<div class="card">
-<img src="IMG-20260221-WA002.jpg">
+<img src="IMG-20260221-WA0029.jpg">
 </div>
 </div>
 
@@ -142,7 +203,7 @@ I love you forever ❤️
 
 <div class="slide">
 <div class="card">
-<img src="IMG-20260221-WA003.jpg">
+<img src="IMG-20260221-WA0031.jpg">
 </div>
 </div>
 
@@ -161,46 +222,31 @@ Stay blessed always ❤️
 
 <div class="slide">
 <div class="card">
-<img src="IMG-20260221-WA004.jpg">
+<img src="IMG-20260221-WA0033.jpg">
 </div>
 </div>
 
 <div class="slide">
 <div class="card">
 
-Even if we don't talk like before sometimes 💭<br>
-You are always in my heart ❤️<br>
-Your presence makes life brighter ☀️<br>
-You are my happiness and peace 🌸<br>
-I promise to care for you forever 💕<br>
-Happy Birthday my love 🎂
-
-</div>
-</div>
-
-<div class="slide">
-<div class="card">
-
-<h2 class="glow">Again Happy Birthday My Laxmi Bow 🎂❤️</h2>
+Again Happy Birthday My Laxmi Bow 🎂❤️<br><br>
 
 Maybe we don't talk like before sometimes 💭<br>
 But you are always in my heart 💖<br>
-I really love you so much more than words can say 🫶<br>
+I really love you so much 🫶<br>
 You are the most special person in my life 🌸<br>
 Your smile means everything to me 😊<br><br>
 
-<h3 class="glow">I Love You My Laxmi Bow My Cutieee 🫶😚❤️‍🩹</h3>
+<h3>I Love You My Laxmi Bow My Cutieee 🫶😚❤️‍🩹</h3>
 
 </div>
 </div>
 
 </div>
 
-<div class="love" style="left:10%">I Love You ❤️</div>
-<div class="love" style="left:30%">I Love You ❤️</div>
-<div class="love" style="left:50%">I Love You ❤️</div>
-<div class="love" style="left:70%">I Love You ❤️</div>
-<div class="love" style="left:90%">I Love You ❤️</div>
+<div class="heart" style="left:15%">❤️</div>
+<div class="heart" style="left:40%">💖</div>
+<div class="heart" style="left:70%">❤️</div>
 
 <script>
 
@@ -211,8 +257,19 @@ document.getElementById("s2").style.display="flex";
 
 function step2(){
 document.getElementById("s2").style.display="none";
+document.getElementById("letterScreen").style.display="flex";
+}
+
+function openLetter(){
+
+document.getElementById("env").classList.add("open");
+
+setTimeout(function(){
+document.getElementById("letterScreen").style.display="none";
 document.getElementById("slider").style.display="flex";
 document.getElementById("music").play();
+},2000)
+
 }
 
 </script>
