@@ -12,41 +12,45 @@ font-family:Arial;
 background:linear-gradient(135deg,#ff758c,#ff7eb3);
 height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
 overflow:hidden;
 color:white;
 text-align:center;
 }
 
-/* slideshow */
+/* slider */
 
-.container{
+.slider{
 display:flex;
 overflow-x:auto;
 scroll-snap-type:x mandatory;
 width:100%;
-gap:20px;
-padding:20px;
 }
 
-.card{
-min-width:280px;
-height:320px;
-background:white;
-color:#ff4d6d;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
+.slide{
+min-width:100%;
+height:100vh;
 display:flex;
 flex-direction:column;
-align-items:center;
 justify-content:center;
+align-items:center;
 padding:20px;
 scroll-snap-align:center;
 }
 
+/* card style */
+
+.card{
+background:white;
+color:#ff4d6d;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+max-width:320px;
+}
+
 img{
-width:180px;
+width:220px;
 border-radius:20px;
 margin-bottom:15px;
 }
@@ -70,32 +74,96 @@ animation:love 6s linear infinite;
 
 <body>
 
-<div class="container">
+<div class="slider">
 
-<div class="card">
-<h2>🎂 Happy Birthday Cutieee 🫶❤️‍🩹😚</h2>
-<p>Swipe ➡ to see wishes</p>
-</div>
+<!-- Slide 1 -->
 
+<div class="slide">
 <div class="card">
+
 <img src="Snapchat-1740021833.jpg">
-<p>May your birthday bring lots of happiness and beautiful moments ✨</p>
+
+<h2>🎂 Happy Birthday Cutieee 🫶❤️‍🩹😚</h2>
+
+<p>Swipe ➡ to see your birthday wishes ✨</p>
+
+</div>
 </div>
 
+<!-- Slide 2 -->
+
+<div class="slide">
 <div class="card">
-<p>I wish your life becomes full of success, peace and joy 🌸</p>
+<p>
+
+May your birthday be filled with happiness ✨ <br>
+May your smile always stay forever 😊 <br>
+May your life be full of success 🌸 <br>
+May every dream of yours come true 💫 <br>
+And may you always stay blessed 💖
+
+</p>
+</div>
 </div>
 
+<!-- Slide 3 -->
+
+<div class="slide">
 <div class="card">
-<p>Even if we don't talk much now, I still wish the best for you always 💫</p>
+<p>
+
+I hope your life brings beautiful moments 🌷 <br>
+I wish your heart always stays happy 💕 <br>
+I wish success follows you everywhere 🌟 <br>
+I wish you peace and positivity 🌸 <br>
+And endless reasons to smile 😊
+
+</p>
+</div>
 </div>
 
+<!-- Slide 4 -->
+
+<div class="slide">
 <div class="card">
-<p>Stay happy, keep smiling and keep shining forever 😊</p>
+<p>
+
+Even if we don't talk like before 💭 <br>
+I still wish the best for you always ✨ <br>
+May your path be full of light 🌟 <br>
+May happiness follow you forever 🌸 <br>
+And may you always shine 💖
+
+</p>
+</div>
 </div>
 
+<!-- Slide 5 -->
+
+<div class="slide">
 <div class="card">
-<p>Once again Happy Birthday Cutieee 💖 <br> — From Amit</p>
+<p>
+
+Today is your special day 🎂 <br>
+May it bring joy and laughter 🎉 <br>
+May your future be bright 🌟 <br>
+May love surround you always 💕 <br>
+And happiness stay with you forever 😊
+
+</p>
+</div>
+</div>
+
+<!-- Slide 6 -->
+
+<div class="slide">
+<div class="card">
+
+<h2>Once Again Happy Birthday Cutieee 💖</h2>
+
+<p>— From Amit</p>
+
+</div>
 </div>
 
 </div>
