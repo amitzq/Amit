@@ -92,6 +92,7 @@ padding:25px;
 border-radius:20px;
 max-width:320px;
 line-height:1.6;
+box-shadow:0 0 20px rgba(255,77,109,0.4);
 }
 
 img{
@@ -106,7 +107,7 @@ font-size:14px;
 opacity:0.7;
 }
 
-/* hearts */
+/* floating hearts */
 
 .heart{
 position:absolute;
@@ -120,7 +121,7 @@ animation:float 6s linear infinite;
 100%{transform:translateY(-120vh)}
 }
 
-/* LOVE background */
+/* neon LOVE background */
 
 .bgLove span{
 position:absolute;
@@ -128,6 +129,25 @@ color:white;
 opacity:0.2;
 font-size:22px;
 animation:float 10s linear infinite;
+}
+
+/* heart burst */
+
+.burst{
+position:absolute;
+font-size:24px;
+animation:burst 2s ease-out forwards;
+}
+
+@keyframes burst{
+0%{
+transform:scale(0);
+opacity:1;
+}
+100%{
+transform:scale(2) translateY(-200px);
+opacity:0;
+}
 }
 
 </style>
@@ -146,7 +166,7 @@ animation:float 10s linear infinite;
 <source src="song.mp3" type="audio/mp3">
 </audio>
 
-<!-- tap 1 -->
+<!-- Tap 1 -->
 
 <div id="s1" class="screen" onclick="step1()">
 
@@ -160,7 +180,7 @@ Tap to continue ❤️
 
 </div>
 
-<!-- tap 2 -->
+<!-- Tap 2 -->
 
 <div id="s2" class="screen" style="display:none;" onclick="step2()">
 
@@ -174,7 +194,7 @@ Tap to open your surprise 💖
 
 </div>
 
-<!-- slider -->
+<!-- Slider -->
 
 <div class="slider" id="slider">
 
@@ -254,9 +274,23 @@ Your smile means everything to me 😊<br><br>
 
 </div>
 
+<!-- floating hearts -->
+
 <div class="heart" style="left:20%">❤️</div>
 <div class="heart" style="left:50%">💖</div>
 <div class="heart" style="left:80%">❤️</div>
+
+<!-- heart burst -->
+
+<div class="burst" style="left:10%">❤️</div>
+<div class="burst" style="left:20%">💖</div>
+<div class="burst" style="left:30%">❤️</div>
+<div class="burst" style="left:40%">💖</div>
+<div class="burst" style="left:50%">❤️</div>
+<div class="burst" style="left:60%">💖</div>
+<div class="burst" style="left:70%">❤️</div>
+<div class="burst" style="left:80%">💖</div>
+<div class="burst" style="left:90%">❤️</div>
 
 <script>
 
