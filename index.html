@@ -135,8 +135,9 @@ animation:float 10s linear infinite;
 
 .burst{
 position:absolute;
-font-size:24px;
-animation:burst 2s ease-out forwards;
+font-size:22px;
+animation:burst 1.2s ease-out forwards;
+pointer-events:none;
 }
 
 @keyframes burst{
@@ -145,7 +146,7 @@ transform:scale(0);
 opacity:1;
 }
 100%{
-transform:scale(2) translateY(-200px);
+transform:scale(2) translateY(-120px);
 opacity:0;
 }
 }
@@ -166,9 +167,9 @@ opacity:0;
 <source src="song.mp3" type="audio/mp3">
 </audio>
 
-<!-- Tap 1 -->
+<!-- tap 1 -->
 
-<div id="s1" class="screen" onclick="step1()">
+<div id="s1" class="screen" onclick="step1(event)">
 
 <div class="tapbox">
 🎁 Tap for your surprise
@@ -180,9 +181,9 @@ Tap to continue ❤️
 
 </div>
 
-<!-- Tap 2 -->
+<!-- tap 2 -->
 
-<div id="s2" class="screen" style="display:none;" onclick="step2()">
+<div id="s2" class="screen" style="display:none;" onclick="step2(event)">
 
 <div class="tapbox">
 💌 Tap again
@@ -194,7 +195,7 @@ Tap to open your surprise 💖
 
 </div>
 
-<!-- Slider -->
+<!-- slider -->
 
 <div class="slider" id="slider">
 
@@ -274,36 +275,58 @@ Your smile means everything to me 😊<br><br>
 
 </div>
 
-<!-- floating hearts -->
-
 <div class="heart" style="left:20%">❤️</div>
 <div class="heart" style="left:50%">💖</div>
 <div class="heart" style="left:80%">❤️</div>
 
-<!-- heart burst -->
-
-<div class="burst" style="left:10%">❤️</div>
-<div class="burst" style="left:20%">💖</div>
-<div class="burst" style="left:30%">❤️</div>
-<div class="burst" style="left:40%">💖</div>
-<div class="burst" style="left:50%">❤️</div>
-<div class="burst" style="left:60%">💖</div>
-<div class="burst" style="left:70%">❤️</div>
-<div class="burst" style="left:80%">💖</div>
-<div class="burst" style="left:90%">❤️</div>
-
 <script>
 
-function step1(){
-document.getElementById("s1").style.display="none";
-document.getElementById("s2").style.display="flex";
+function createBurst(x,y){
+
+for(let i=0;i<15;i++){
+
+let heart=document.createElement("div");
+heart.className="burst";
+heart.innerHTML="❤️";
+
+heart.style.left=x+"px";
+heart.style.top=y+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},1200);
+
 }
 
-function step2(){
+}
+
+function step1(e){
+
+createBurst(e.clientX,e.clientY);
+
+document.getElementById("s1").style.display="none";
+document.getElementById("s2").style.display="flex";
+
+}
+
+function step2(e){
+
+createBurst(e.clientX,e.clientY);
+
 document.getElementById("s2").style.display="none";
 document.getElementById("slider").style.display="flex";
+
 document.getElementById("music").play();
+
 }
+
+document.addEventListener("click",function(e){
+
+createBurst(e.clientX,e.clientY);
+
+});
 
 </script>
 
