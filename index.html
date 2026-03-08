@@ -4,11 +4,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Surprise</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
 <style>
 
 body{
 margin:0;
-font-family:Arial;
+font-family:'Poppins',sans-serif;
 background:linear-gradient(135deg,#ff4d6d,#ff8fa3);
 height:100vh;
 overflow:hidden;
@@ -16,27 +18,17 @@ text-align:center;
 color:white;
 }
 
-/* neon LOVE background */
+/* neon title */
 
-.bgLove{
-position:absolute;
-width:100%;
-height:100%;
-overflow:hidden;
-z-index:-1;
+.glow{
+font-family:'Great Vibes',cursive;
+font-size:38px;
+animation:neon 1.5s infinite alternate;
 }
 
-.bgLove span{
-position:absolute;
-color:#fff;
-font-size:22px;
-opacity:0.25;
-animation:float 10s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0)}
-100%{transform:translateY(-120vh)}
+@keyframes neon{
+from{text-shadow:0 0 10px #fff,0 0 20px #ff4d6d;}
+to{text-shadow:0 0 20px #fff,0 0 40px #ff4d6d;}
 }
 
 /* tap screen */
@@ -56,63 +48,29 @@ background:white;
 color:#ff4d6d;
 padding:25px 35px;
 border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
-}
-
-/* love letter */
-
-.envelope{
-width:260px;
-height:160px;
-background:white;
-border-radius:10px;
-position:relative;
-cursor:pointer;
-}
-
-.flap{
-position:absolute;
-top:0;
-border-left:130px solid transparent;
-border-right:130px solid transparent;
-border-top:80px solid #ff4d6d;
-}
-
-.letter{
-position:absolute;
-top:20px;
-left:10px;
-right:10px;
-background:white;
-color:#ff4d6d;
-padding:15px;
-border-radius:10px;
-transform:translateY(100px);
-transition:1s;
-}
-
-.open .letter{
-transform:translateY(-40px);
 }
 
 /* slider */
 
 .slider{
 display:none;
-display:flex;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
+overflow:hidden;
 width:100%;
+height:100vh;
+}
+
+.slides{
+display:flex;
+transition:transform 0.8s ease;
+height:100%;
 }
 
 .slide{
 min-width:100%;
-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-scroll-snap-align:center;
 padding:20px;
 }
 
@@ -122,7 +80,6 @@ color:#ff4d6d;
 padding:25px;
 border-radius:20px;
 max-width:320px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 img{
@@ -131,13 +88,28 @@ border-radius:20px;
 margin-bottom:10px;
 }
 
-/* heart animation */
+/* hearts */
 
 .heart{
 position:absolute;
 bottom:-50px;
 font-size:22px;
 animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
+}
+
+/* LOVE background */
+
+.bgLove span{
+position:absolute;
+color:white;
+opacity:0.2;
+font-size:22px;
+animation:float 10s linear infinite;
 }
 
 </style>
@@ -147,10 +119,8 @@ animation:float 6s linear infinite;
 
 <div class="bgLove">
 <span style="left:10%">LOVE</span>
-<span style="left:30%">LOVE</span>
-<span style="left:50%">LOVE</span>
+<span style="left:40%">LOVE</span>
 <span style="left:70%">LOVE</span>
-<span style="left:90%">LOVE</span>
 </div>
 
 <audio id="music" loop>
@@ -165,22 +135,19 @@ animation:float 6s linear infinite;
 <div class="tapbox">💌 Tap again</div>
 </div>
 
-<div id="letterScreen" class="screen" style="display:none;">
-
-<div class="envelope" id="env" onclick="openLetter()">
-
-<div class="flap"></div>
-
-<div class="letter">
-<h3>Happy Birthday<br>My Laxmi Bow ❤️</h3>
-<p>Tap again to see your memories</p>
-</div>
-
-</div>
-
+<div id="letterScreen" class="screen" style="display:none;" onclick="openLetter()">
+<div class="tapbox">💌 Open your love letter</div>
 </div>
 
 <div class="slider" id="slider">
+
+<div class="slides" id="slides">
+
+<div class="slide">
+<div class="card">
+<h2 class="glow">Happy Birthday My Laxmi Bow 🫶😚❤️</h2>
+</div>
+</div>
 
 <div class="slide">
 <div class="card">
@@ -190,14 +157,12 @@ animation:float 6s linear infinite;
 
 <div class="slide">
 <div class="card">
-
 Happy Birthday My Laxmi Wife 🎂💖<br>
 You are the most beautiful part of my life 🌸<br>
 Your smile makes my world brighter 😊<br>
 Every moment with you feels magical ✨<br>
 I feel lucky to have you beside me 🍀<br>
 I love you forever ❤️
-
 </div>
 </div>
 
@@ -209,14 +174,12 @@ I love you forever ❤️
 
 <div class="slide">
 <div class="card">
-
 May your birthday be full of happiness 🎉<br>
 May your heart always stay peaceful 🌷<br>
 May your dreams come true one day ✨<br>
 May love always surround you 💞<br>
 May success follow you everywhere 🌟<br>
 Stay blessed always ❤️
-
 </div>
 </div>
 
@@ -228,8 +191,7 @@ Stay blessed always ❤️
 
 <div class="slide">
 <div class="card">
-
-Again Happy Birthday My Laxmi Bow 🎂❤️<br><br>
+<h2 class="glow">Again Happy Birthday My Laxmi Bow 🎂❤️</h2>
 
 Maybe we don't talk like before sometimes 💭<br>
 But you are always in my heart 💖<br>
@@ -243,10 +205,11 @@ Your smile means everything to me 😊<br><br>
 </div>
 
 </div>
+</div>
 
-<div class="heart" style="left:15%">❤️</div>
-<div class="heart" style="left:40%">💖</div>
-<div class="heart" style="left:70%">❤️</div>
+<div class="heart" style="left:20%">❤️</div>
+<div class="heart" style="left:50%">💖</div>
+<div class="heart" style="left:80%">❤️</div>
 
 <script>
 
@@ -262,13 +225,32 @@ document.getElementById("letterScreen").style.display="flex";
 
 function openLetter(){
 
-document.getElementById("env").classList.add("open");
-
-setTimeout(function(){
 document.getElementById("letterScreen").style.display="none";
-document.getElementById("slider").style.display="flex";
+document.getElementById("slider").style.display="block";
 document.getElementById("music").play();
-},2000)
+
+startSlide();
+
+}
+
+let index=0;
+
+function startSlide(){
+
+const slides=document.getElementById("slides");
+const total=slides.children.length;
+
+setInterval(function(){
+
+index++;
+
+if(index>=total){
+index=total-1;
+}
+
+slides.style.transform="translateX(-"+index*100+"%)";
+
+},4000);
 
 }
 
