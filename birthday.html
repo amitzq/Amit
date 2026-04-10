@@ -1,0 +1,92 @@
+
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }canvas {
+  position: fixed;
+  inset: 0;
+}
+
+.text {
+  position: relative;
+  z-index: 2;
+  font-size: 90px;
+  font-weight: bold;
+  color: #ffb6c1;
+  text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4;
+  letter-spacing: 6px;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <div class="text" id="msg"></div>  <script>
+    const message = "HAPPY BIRTHDAY TO YOU DEAR";
+    const msgEl = document.getElementById("msg");
+    let i = 0;
+
+    function typeText() {
+      if (i < message.length) {
+        msgEl.textContent += message[i];
+        i++;
+        setTimeout(typeText, 180);
+      }
+    }
+    typeText();
+
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    const letters = "HAPPY BIRTHDAY";
+    const fontSize = 18;
+    let columns = Math.floor(window.innerWidth / fontSize);
+    let drops = Array(columns).fill(1);
+
+    function draw() {
+      ctx.fillStyle = "rgba(0,0,0,0.08)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "rgba(255,255,255,0.9)";
+      ctx.font = fontSize + "px monospace";
+
+      for (let x = 0; x < drops.length; x++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, x * fontSize, drops[x] * fontSize);
+
+        if (drops[x] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[x] = 0;
+        }
+        drops[x]++;
+      }
+    }
+
+    setInterval(draw, 50);
+  </script></body>
+</html>
